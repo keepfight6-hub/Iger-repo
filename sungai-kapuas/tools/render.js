@@ -9,8 +9,8 @@ const { chromium } = require('playwright'); const { spawn } = require('child_pro
   const t0 = t0S ? +t0S : 0, t1 = t1S ? +t1S : dur; const n = Math.round((t1 - t0) * fps);
   const args = ['-y','-loglevel','error','-f','image2pipe','-c:v','mjpeg','-framerate',String(fps),'-i','-'];
   if (audio) args.push('-ss', String(t0), '-i', audio);
-  args.push('-c:v','libx264','-preset','slow','-crf','17','-pix_fmt','yuv420p','-profile:v','high','-level','4.2','-r',String(fps));
-  if (audio) args.push('-c:a','aac','-b:a','192k','-ar','48000','-shortest');
+  args.push('-c:v','libx264','-preset','slow','-crf','21','-maxrate','8M','-bufsize','16M','-pix_fmt','yuv420p','-profile:v','high','-level','4.2','-r',String(fps));
+  if (audio) args.push('-af','apad','-c:a','aac','-b:a','192k','-ar','48000','-t',String(t1-t0));
   args.push('-movflags','+faststart', out);
   const ff = spawn('ffmpeg', args, { stdio: ['pipe','inherit','inherit'] });
   const st = Date.now();

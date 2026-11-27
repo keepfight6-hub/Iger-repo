@@ -32,7 +32,7 @@ gaya.md — Peta Relief Sinematik · Set A "Siang tropis"
 </head>
 <body>
 <div id="wrap"><canvas id="v" width="1080" height="1920"></canvas></div>
-<div id="ui"><button id="pp">Putar</button><input id="sl" type="range" min="0" max="60" step="0.01" value="0"><span id="tm">0,0</span><button id="fs">Layar penuh</button></div>
+<div id="ui"><button id="pp">Putar</button><input id="sl" type="range" min="0" max="60.5" step="0.01" value="0"><span id="tm">0,0</span><button id="fs">Layar penuh</button></div>
 <div id="err"></div>
 <script>
 window.onerror=(m,s,l,c,e)=>{const d=document.getElementById('err');d.style.display='block';d.textContent+='Error: '+m+' ('+l+':'+c+')\n';};
@@ -42,18 +42,18 @@ window.addEventListener('unhandledrejection',e=>{const d=document.getElementById
 <script src="assets/peta/data.js"></script>
 <script>
 /* ==== [0] WAKTU — semua detik penting (perkiraan VO ±2,7 kata/dtk; disetel ulang saat VO masuk) */
-const WAKTU={
-  dur:60,
-  hook:.4, awan:2.45,
-  terbang1:3.6, jakarta:4.3, surabaya:5.3, sisa:6.1,
-  pulang:7.5, kalimantan:9.8, kapuas:11.2,
-  panjang:12.8, angka:13.2, terpanjang:15.5,
-  banding:17.6, darat:19.0, delapan:21.0,
-  muller:23.4, hutan:25.4, danau:26.6, belok:28.3, pontianak:30.4,
-  airnya:32.0, cokelat:33.2, lumpur:37.4, hulu:39.2,
-  satwa:41.4, arwana:42.8, bekantan:44.1, enggang:45.4,
-  warga:46.8, jalan:48.3, dapur:49.1, rumah:50.0,
-  tipis:51.3, diukur:54.0, jawa:56.8
+const WAKTU={ /* disetel ke vo.mp3 (silencedetect + pembagian per huruf) */
+  dur:60.5,
+  hook:.3, awan:2.45,
+  terbang1:3.2, jakarta:4.15, surabaya:5.0, sisa:5.9,
+  pulang:7.1, kalimantan:9.5, kapuas:11.0,
+  panjang:12.6, angka:13.7, terpanjang:16.3,
+  banding:18.1, darat:19.2, delapan:22.0,
+  muller:24.8, hutan:27.0, danau:28.0, belok:29.4, pontianak:32.2,
+  airnya:33.95, cokelat:35.05, lumpur:39.3, hulu:40.7,
+  satwa:42.6, arwana:44.2, bekantan:45.3, enggang:46.3,
+  warga:47.5, jalan:49.5, dapur:50.3, rumah:51.3,
+  tipis:52.27, diukur:54.57, jawa:57.9
 };
 const T=WAKTU;
 
@@ -492,8 +492,8 @@ function teksLayar(c,t){
   kicker(c,'DI PETA',X,300,t,T.tipis,T.diukur-.3);
   kalimat(c,'CUMA GARIS TIPIS',X,410,t,T.tipis+.3,T.diukur-.3,{});
   kicker(c,'PADAHAL KALAU DIUKUR',X,300,t,T.diukur,null);
-  kalimat(c,'HAMPIR SEJAUH',X,410,t,T.diukur+.9,null,{});
-  kalimat(c,'SATU PULAU JAWA',X,515,t,T.diukur+1.3,null,{kunci:['JAWA']});
+  kalimat(c,'HAMPIR SEJAUH',X,410,t,T.diukur+1.9,null,{});
+  kalimat(c,'SATU PULAU JAWA',X,515,t,T.diukur+2.9,null,{kunci:['JAWA']});
   kalimat(c,'SUNGAI KAPUAS · 1.143 KM',X,1540,t,T.jawa,null,{f:FR,w:700,s:50,col:PAL.emas,st:'normal',jeda:.06,sp:.08});
 }
 
